@@ -1,0 +1,6 @@
+services:
+  php:
+    build: ./docker
+    volumes:
+      - .:/app
+    working_dir: /app

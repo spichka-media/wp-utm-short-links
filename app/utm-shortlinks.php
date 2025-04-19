@@ -13,8 +13,8 @@ if (!defined('ABSPATH')) {
 
 require_once __DIR__ . '/helpers.php';
 
-use Spichka\UtmShortlinks\AdminPage;
-use Spichka\UtmShortlinks\ShortlinkHandler;
+use Spichka\Usl\AdminPage;
+use Spichka\Usl\Handler;
 
 // Register admin menu
 add_action('admin_menu', function () {
@@ -22,10 +22,13 @@ add_action('admin_menu', function () {
 });
 
 // Short links handler
-add_action('init', function () {
-    ShortlinkHandler::registerRewriteRules();
-    ShortlinkHandler::handleRedirect();
-});
+add_action(
+    'init',
+    function () {
+        Handler::registerRewriteRules();
+        Handler::handleRedirect();
+    }
+);
 
 // Add page functions
 add_action('add_meta_boxes', function () {
