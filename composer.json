@@ -24,7 +24,8 @@
             "Spichka\\UtmShortlinks\\": "src/"
         },
         "files": [
-            "src/utm-shortlinks.php"
+            "src/utm-shortlinks.php",
+            "src/helpers.php"
         ]
     },
     "autoload-dev": {
