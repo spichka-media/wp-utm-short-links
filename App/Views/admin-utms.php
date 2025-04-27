@@ -19,8 +19,8 @@ use Spichka\Usl\Services\T;
     <table class="widefat spichka-usl-table" id="utms-table">
         <thead>
         <tr>
-            <th><?= esc_html(T::t('admin.utms.utm_name')) ?></th>
             <th><?= esc_html(T::t('admin.utms.utm_code')) ?></th>
+            <th><?= esc_html(T::t('admin.utms.utm_name')) ?></th>
             <th class="text-right"><?= esc_html(T::t('admin.actions.actions')) ?></th>
         </tr>
         </thead>

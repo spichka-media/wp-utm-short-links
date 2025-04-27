@@ -21,8 +21,8 @@ $colCount = 3 + count($settingContainer->getUtms());
     <table class="widefat spichka-usl-table" id="links-table">
         <thead>
         <tr>
-            <th><?= esc_html(T::t('admin.links.link_name')) ?></th>
             <th><?= esc_html(T::t('admin.links.link_code')) ?></th>
+            <th><?= esc_html(T::t('admin.links.link_name')) ?></th>
             <th><?= esc_html(T::t('admin.links.link_utm_value')) ?></th>
             <th class="text-right"><?= esc_html(T::t('admin.actions.actions')) ?></th>
         </tr>
