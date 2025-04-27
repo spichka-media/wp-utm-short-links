@@ -6,20 +6,20 @@ class PostPage
 {
     use RenderedPageTrait;
 
-    public static function register(): void
+    public function register(): void
     {
         add_meta_box(
             'utm_short-links_meta',
             T::t('plugin.name'),
-            [self::class, 'render'],
+            [$this, 'render'],
             'post',
             'side'
         );
     }
 
-    public static function render($post): void
+    public function render($post): void
     {
-        self::renderTemplate('post', [
+        $this->renderTemplate('post', [
             'post' => $post,
         ]);
     }

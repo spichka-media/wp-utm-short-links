@@ -18,4 +18,15 @@ readonly class Link
         public array $linkToUtms,
     ) {
     }
+
+    public function getLinkToUtm(Utm $utm): LinkToUtm
+    {
+        foreach ($this->linkToUtms as $linkToUtm) {
+            if ($linkToUtm->utm === $utm) {
+                return $linkToUtm;
+            }
+        }
+
+        return new LinkToUtm($utm, '');
+    }
 }

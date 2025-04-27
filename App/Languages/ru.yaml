@@ -1,6 +1,5 @@
 plugin:
     name: "UTM Ссылки"
-
 admin:
     title: "Настройки UTM Ссылок"
     description: "Список получившихся ссылок можно увидеть на странице редактирования Записей"
@@ -10,6 +9,7 @@ admin:
         no_links: "Нет ссылок для сокращения"
         link_code: "Код ссылки"
         link_name: "Название ссылки"
+        link_utm_value: "Значения UTM меток"
     utms:
         tab: "UTM Метки системы"
         description: "Вы можете изменить список UTM меток, которые будут добавляться к ссылкам"
@@ -21,10 +21,12 @@ admin:
         remove: "Удалить"
         save: "Сохранить"
         add: "Добавить"
-
 utm:
     utm_source: "Источник кампании"
     utm_medium: "Тип трафика"
     utm_campaign: "Название кампании"
     utm_content: "Идентификатор объявления"
     utm_term: "Ключевое слово"
+link:
+    instagram: "Instagram"
+    telegram: "Telegram"

@@ -1,13 +1,13 @@
 <?php
 
 use Spichka\Usl\Models\Link;
-use Spichka\Usl\Models\Utm;
+use Spichka\Usl\Models\SettingContainer;
 use Spichka\Usl\Services\AdminPage;
 use Spichka\Usl\Services\T;
 
 /**
  * @var Link[] $links
- * @var Utm[] $utms
+ * @var SettingContainer $settingContainer
  * @var AdminPage $this
  * @var string $tab
  */
@@ -16,7 +16,7 @@ use Spichka\Usl\Services\T;
 <div class="wrap wp-utm-short-links">
     <h1>
         <?= esc_html(T::t('admin.title')) ?>
-        <p class="description"><?= esc_html(T::t('admin.description')) ?></p>
+        <p class="description mt-2"><?= esc_html(T::t('admin.description')) ?></p>
     </h1>
 
     <h2 class="nav-tab-wrapper">
@@ -35,20 +35,22 @@ use Spichka\Usl\Services\T;
     <div class="tab-content">
         <div class="tab-pane active">
             <?php if ($tab === 'links') : ?>
-                <?php AdminPage::renderTemplate('admin-links', [
-                    'links' => $links,
+                <?php $this->renderTemplate('admin-links', [
+                    'settingContainer' => $settingContainer,
                 ]) ?>
             <?php endif ?>
 
             <?php if ($tab === 'utms') : ?>
-                <?php AdminPage::renderTemplate('admin-utms', [
-                    'utms' => $utms,
+                <?php $this->renderTemplate('admin-utms', [
+                    'settingContainer' => $settingContainer,
                 ]) ?>
             <?php endif ?>
         </div>
     </div>
 </div>
 
-<?php AdminPage::renderTemplate('admin-scripts') ?>
+<?php $this->renderTemplate('admin-scripts', [
+    'settingContainer' => $settingContainer,
+]) ?>
 
-<?php AdminPage::renderTemplate('admin-styles') ?>
+<?php $this->renderTemplate('admin-styles') ?>

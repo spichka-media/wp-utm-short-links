@@ -43,5 +43,27 @@
     .spichka-usl-table .remove-row:hover {
         color: #dc3232;
     }
+
+    .wp-utm-short-links .text-right {
+        text-align: right;
+    }
+
+    .wp-utm-short-links .mt-2 {
+        margin-top: 0.5rem;
+    }
+
+    .wp-utm-short-links .mb-1 {
+        margin-top: 0.25rem;
+    }
+
+    .wp-utm-short-links .pos-relative {
+        position: relative;
+    }
+
+    .wp-utm-short-links .right-bottom {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+    }
 </style>
 

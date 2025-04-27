@@ -1,6 +1,11 @@
 <?php
 
+use Spichka\Usl\Models\SettingContainer;
 use Spichka\Usl\Services\T;
+
+/**
+ * @var SettingContainer $settingContainer
+ */
 
 ?>
 
@@ -16,10 +21,25 @@ use Spichka\Usl\Services\T;
                 tableBody = $('#links-table tbody')
                 newRow = `
                     <tr>
-                        <td><input type="text" name="link_code[]" class="regular-text" required></td>
                         <td><input type="text" name="link_name[]" class="regular-text" required></td>
+                        <td><input type="text" name="link_code[]" class="regular-text" required></td>
                         <td>
-                            <button type="button" class="button remove-row right">
+                            <?php foreach ($settingContainer->utms as $utm) : ?>
+                                <div class="mb-1">
+                                    <label class="utm-label" for="link_to_utm[<?= esc_attr($utm->code) ?>][]">
+                                        <?= esc_html($utm->name) ?>
+                                    </label>
+                                    <input type="text"
+                                           id="link_to_utm[<?= esc_attr($utm->code) ?>][]"
+                                           name="link_to_utm[<?= esc_attr($utm->code) ?>][]"
+                                           value=""
+                                           class="regular-text"
+                                    >
+                                </div>
+                            <?php endforeach ?>
+                        </td>
+                        <td class="pos-relative">
+                            <button type="button" class="button remove-row right-bottom">
                                 <?= esc_js(T::t('admin.actions.remove')) ?>
                             </button>
                         </td>
@@ -29,8 +49,8 @@ use Spichka\Usl\Services\T;
                 tableBody = $('#utms-table tbody')
                 newRow = `
                     <tr>
-                        <td><input type="text" name="utm_code[]" class="regular-text" required></td>
                         <td><input type="text" name="utm_name[]" class="regular-text" required></td>
+                        <td><input type="text" name="utm_code[]" class="regular-text" required></td>
                         <td>
                             <button type="button" class="button remove-row right">
                                 <?= esc_js(T::t('admin.actions.remove')) ?>
@@ -72,3 +92,4 @@ use Spichka\Usl\Services\T;
         })
     })
 </script>
+

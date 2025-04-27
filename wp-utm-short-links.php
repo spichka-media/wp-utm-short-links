@@ -27,19 +27,22 @@ add_action('after_setup_theme', function () {
 
 // Register admin menu
 add_action('admin_menu', function () {
-    AdminPage::register();
+    $adminPage = new AdminPage();
+    $adminPage->register();
 });
 
 // Add page functions
 add_action('add_meta_boxes', function () {
-    PostPage::register();
+    $postPage = new PostPage();
+    $postPage->register();
 });
 
 // Short links handler
 add_action(
     'init',
     function () {
-        RedirectHandler::register();
-        RedirectHandler::handle();
+        $redirectHandler = new RedirectHandler();
+        $redirectHandler->register();
+        $redirectHandler->handle();
     }
 );

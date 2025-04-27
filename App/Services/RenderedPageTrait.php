@@ -10,7 +10,7 @@ trait RenderedPageTrait
      * @param array<string, mixed> $data
      * @return void
      */
-    public static function renderTemplate(string $template, array $data = []): void
+    public function renderTemplate(string $template, array $data = []): void
     {
         extract($data);
         $template_file = plugin_dir_path(dirname(__FILE__)) . "Views/$template.php";
