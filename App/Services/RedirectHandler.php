@@ -4,6 +4,9 @@ namespace Spichka\Usl\Services;
 
 class RedirectHandler
 {
+    /**
+     * @return void
+     */
     public static function register(): void
     {
         add_rewrite_rule('^s/([^/]+)/([^/]+)/?', 'index.php?shortlink=$matches[1]&code=$matches[2]', 'top');
@@ -11,6 +14,9 @@ class RedirectHandler
         add_rewrite_tag('%code%', '([^&]+)');
     }
 
+    /**
+     * @return void
+     */
     public static function handle(): void
     {
         if (get_query_var('shortlink') && get_query_var('code')) {
@@ -25,6 +31,11 @@ class RedirectHandler
         }
     }
 
+    /**
+     * @param string $shortlink
+     * @param string $code
+     * @return string
+     */
     private static function resolveShortlink(string $shortlink, string $code): string
     {
         $utmParams = [

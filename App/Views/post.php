@@ -11,8 +11,8 @@ use Spichka\Usl\Models\Link;
 <?php foreach ($links as $link) : ?>
     <p>
         <label>
-            <input type="checkbox" name="utm_short_links[<?= $link->code ?>]" value="1">
-            <?= $link->name ?>
+            <input type="checkbox" name="utm_short_links[<?= $link->getCode() ?>]" value="1">
+            <?= $link->getName() ?>
         </label>
     </p>
 <?php endforeach ?>

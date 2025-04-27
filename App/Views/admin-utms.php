@@ -5,7 +5,7 @@ use Spichka\Usl\Services\AdminPage;
 use Spichka\Usl\Services\T;
 
 /**
- * @var $settingContainer SettingContainer
+ * @var SettingContainer $settingContainer
  * @var AdminPage $this
  */
 ?>
@@ -25,19 +25,19 @@ use Spichka\Usl\Services\T;
         </tr>
         </thead>
         <tbody>
-        <?php if (!$settingContainer->utms) : ?>
+        <?php if (!$settingContainer->getUtms()) : ?>
             <tr class="no-items">
                 <td colspan="3"><?= esc_html(T::t('admin.utms.no_utms')) ?></td>
             </tr>
         <?php else : ?>
-            <?php foreach ($settingContainer->utms as $utm) : ?>
+            <?php foreach ($settingContainer->getUtms() as $utm) : ?>
                 <tr>
                     <td>
                         <label>
                             <input type="text"
-                                   name="utm_name[]"
-                                   value="<?= esc_attr($utm->name) ?>"
-                                   class="regular-text"
+                                   name="utm_code[]"
+                                   value="<?= esc_attr($utm->getCode()) ?>"
+                                   class="regular-text disabled"
                                    required
                             >
                         </label>
@@ -45,8 +45,8 @@ use Spichka\Usl\Services\T;
                     <td>
                         <label>
                             <input type="text"
-                                   name="utm_code[]"
-                                   value="<?= esc_attr($utm->code) ?>"
+                                   name="utm_name[]"
+                                   value="<?= esc_attr($utm->getName()) ?>"
                                    class="regular-text"
                                    required
                             >

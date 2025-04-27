@@ -10,6 +10,9 @@ use Throwable;
 
 class SettingService
 {
+    /**
+     * @return SettingContainer
+     */
     public function getContainer(): SettingContainer
     {
         try {
@@ -19,13 +22,16 @@ class SettingService
         }
 
         if (!($linksContainer instanceof SettingContainer)) {
-            // Serrialization errors and others
+            // Serialization errors and others
             return $this->createDefaultContainer();
         }
 
         return $linksContainer;
     }
 
+    /**
+     * @return SettingContainer
+     */
     private function createDefaultContainer(): SettingContainer
     {
         $utms = [
@@ -38,15 +44,15 @@ class SettingService
 
         $links = [
             new Link(
-                T::t('link.instagram'),
                 'inst',
+                T::t('link.instagram'),
                 [
                     new LinkToUtm($utmSource, 'instagram'),
                 ],
             ),
             new Link(
-                T::t('link.telegram'),
                 'tg',
+                T::t('link.telegram'),
                 [
                     new LinkToUtm($utmSource, 'telegram'),
                 ],
@@ -54,5 +60,21 @@ class SettingService
         ];
 
         return new SettingContainer($utms, $links);
+    }
+
+    /**
+     * @param SettingContainer $settingContainer
+     * @param array<string, mixed> $post
+     * @return void
+     */
+    public function updateByPost(SettingContainer $settingContainer, array $post): void
+    {
+        if (isset($post['save_links'])) {
+            $settingContainer->updateLinks($post['link_name'], $post['link_code'], $post['link_to_utm']);
+        } elseif (isset($post['save_utms'])) {
+            $settingContainer->updateUtms($post['utm_name'], $post['utm_code']);
+        }
+
+        update_option('wp-utm-short-links-setting', $settingContainer);
     }
 }

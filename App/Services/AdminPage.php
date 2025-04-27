@@ -6,6 +6,9 @@ class AdminPage
 {
     use RenderedPageTrait;
 
+    /**
+     * @return void
+     */
     public function register(): void
     {
         add_options_page(
@@ -17,10 +20,16 @@ class AdminPage
         );
     }
 
+    /**
+     * @return void
+     */
     public function render(): void
     {
         $settingService = new SettingService();
+
         $settingContainer = $settingService->getContainer();
+
+        $settingService->updateByPost($settingContainer, $_POST);
 
         $this->renderTemplate('admin', [
             'settingContainer' => $settingContainer,

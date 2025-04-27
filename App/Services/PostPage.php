@@ -6,6 +6,9 @@ class PostPage
 {
     use RenderedPageTrait;
 
+    /**
+     * @return void
+     */
     public function register(): void
     {
         add_meta_box(
@@ -17,6 +20,10 @@ class PostPage
         );
     }
 
+    /**
+     * @param $post
+     * @return void
+     */
     public function render($post): void
     {
         $this->renderTemplate('post', [

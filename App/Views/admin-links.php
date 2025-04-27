@@ -9,7 +9,7 @@ use Spichka\Usl\Services\T;
  * @var AdminPage $this
  */
 
-$colCount = 3 + count($settingContainer->utms);
+$colCount = 3 + count($settingContainer->getUtms());
 ?>
 
 <h3><?= esc_html(T::t('admin.links.tab')) ?></h3>
@@ -28,20 +28,20 @@ $colCount = 3 + count($settingContainer->utms);
         </tr>
         </thead>
         <tbody>
-            <?php if (empty($settingContainer->links)) : ?>
+            <?php if (empty($settingContainer->getLinks())) : ?>
                 <tr class="no-items">
                     <td colspan="<?=$colCount?>">
                         <?= esc_html(T::t('admin.links.no_links')) ?>
                     </td>
                 </tr>
             <?php else : ?>
-                <?php foreach ($settingContainer->links as $link) : ?>
+                <?php foreach ($settingContainer->getLinks() as $link) : ?>
                     <tr>
                         <td>
                             <label>
                                 <input type="text"
-                                       name="link_name[]"
-                                       value="<?= esc_attr($link->name) ?>"
+                                       name="link_code[]"
+                                       value="<?= esc_attr($link->getCode()) ?>"
                                        class="regular-text"
                                        required
                                 >
@@ -50,24 +50,24 @@ $colCount = 3 + count($settingContainer->utms);
                         <td>
                             <label>
                                 <input type="text"
-                                       name="link_code[]"
-                                       value="<?= esc_attr($link->code) ?>"
+                                       name="link_name[]"
+                                       value="<?= esc_attr($link->getName()) ?>"
                                        class="regular-text"
                                        required
                                 >
                             </label>
                         </td>
                         <td>
-                            <?php foreach ($settingContainer->utms as $utm) : ?>
+                            <?php foreach ($settingContainer->getUtms() as $utm) : ?>
                                 <div class="mb-1">
                                     <?php $linkToUtm = $link->getLinkToUtm($utm) ?>
-                                    <label class="utm-label" for="link_to_utm[<?= esc_attr($utm->code) ?>][]">
-                                        <?= esc_html($utm->name) ?>
+                                    <label class="utm-label" for="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]">
+                                        <?= esc_html($utm->getName()) ?>
                                     </label>
                                     <input type="text"
-                                           id="link_to_utm[<?= esc_attr($utm->code) ?>][]"
-                                           name="link_to_utm[<?= esc_attr($utm->code) ?>][]"
-                                           value="<?= esc_attr($linkToUtm->utmValue) ?>"
+                                           id="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]"
+                                           name="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]"
+                                           value="<?= esc_attr($linkToUtm->getUtmValue()) ?>"
                                            class="regular-text"
                                     >
                                 </div>

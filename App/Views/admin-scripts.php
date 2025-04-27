@@ -21,17 +21,17 @@ use Spichka\Usl\Services\T;
                 tableBody = $('#links-table tbody')
                 newRow = `
                     <tr>
-                        <td><input type="text" name="link_name[]" class="regular-text" required></td>
                         <td><input type="text" name="link_code[]" class="regular-text" required></td>
+                        <td><input type="text" name="link_name[]" class="regular-text" required></td>
                         <td>
-                            <?php foreach ($settingContainer->utms as $utm) : ?>
+                            <?php foreach ($settingContainer->getUtms() as $utm) : ?>
                                 <div class="mb-1">
-                                    <label class="utm-label" for="link_to_utm[<?= esc_attr($utm->code) ?>][]">
-                                        <?= esc_html($utm->name) ?>
+                                    <label class="utm-label" for="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]">
+                                        <?= esc_html($utm->getName()) ?>
                                     </label>
                                     <input type="text"
-                                           id="link_to_utm[<?= esc_attr($utm->code) ?>][]"
-                                           name="link_to_utm[<?= esc_attr($utm->code) ?>][]"
+                                           id="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]"
+                                           name="link_to_utm[<?= esc_attr($utm->getCode()) ?>][]"
                                            value=""
                                            class="regular-text"
                                     >
@@ -49,8 +49,8 @@ use Spichka\Usl\Services\T;
                 tableBody = $('#utms-table tbody')
                 newRow = `
                     <tr>
-                        <td><input type="text" name="utm_name[]" class="regular-text" required></td>
                         <td><input type="text" name="utm_code[]" class="regular-text" required></td>
+                        <td><input type="text" name="utm_name[]" class="regular-text" required></td>
                         <td>
                             <button type="button" class="button remove-row right">
                                 <?= esc_js(T::t('admin.actions.remove')) ?>

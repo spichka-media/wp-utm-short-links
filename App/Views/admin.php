@@ -19,6 +19,12 @@ use Spichka\Usl\Services\T;
         <p class="description mt-2"><?= esc_html(T::t('admin.description')) ?></p>
     </h1>
 
+    <?php if ($_POST) : ?>
+        <div class="notice notice-success is-dismissible">
+            <p><?= esc_html(T::t('admin.saved_successfully')) ?></p>
+        </div>
+    <?php endif ?>
+
     <h2 class="nav-tab-wrapper">
         <a href="?page=wp-utm-short-links&tab=links"
            class="nav-tab <?= $tab === 'links' ? 'nav-tab-active' : ''; ?>"
