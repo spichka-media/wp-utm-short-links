@@ -2,6 +2,8 @@
 
 namespace Spichka\Usl\Services;
 
+use WP_Post;
+
 class PostPage
 {
     use RenderedPageTrait;
@@ -21,12 +23,22 @@ class PostPage
     }
 
     /**
-     * @param $post
      * @return void
      */
-    public function render($post): void
+    public function render(WP_Post $post): void
     {
+        if (!$post->ID) {
+            return;
+        }
+
+        $settingService = new SettingService();
+        $settingContainer = $settingService->getContainer();
+
+        $rootUrl = get_site_url();
+
         $this->renderTemplate('post', [
+            'settingContainer' => $settingContainer,
+            'rootUrl' => $rootUrl,
             'post' => $post,
         ]);
     }

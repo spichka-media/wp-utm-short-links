@@ -22,6 +22,8 @@ admin:
         remove: "Удалить"
         save: "Сохранить"
         add: "Добавить"
+post:
+    copy_link: "Скопировать ссылку"
 utm:
     utm_source: "Источник кампании"
     utm_medium: "Тип трафика"

@@ -22,6 +22,8 @@ admin:
         remove: "Remove"
         save: "Save"
         add: "Add New"
+post:
+    copy_link: "Copy Link"
 utm:
     utm_source: "Campaign Source"
     utm_medium: "Traffic Type"

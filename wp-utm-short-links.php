@@ -44,5 +44,6 @@ add_action(
         $redirectHandler = new RedirectHandler();
         $redirectHandler->register();
         $redirectHandler->handle();
-    }
+    },
+    1
 );
