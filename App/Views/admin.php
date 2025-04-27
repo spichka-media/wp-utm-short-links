@@ -10,6 +10,7 @@ use Spichka\Usl\Services\T;
  * @var SettingContainer $settingContainer
  * @var AdminPage $this
  * @var string $tab
+ * @var bool $isPermalink
  */
 ?>
 
@@ -22,6 +23,12 @@ use Spichka\Usl\Services\T;
     <?php if ($_POST) : ?>
         <div class="notice notice-success is-dismissible">
             <p><?= esc_html(T::t('admin.saved_successfully')) ?></p>
+        </div>
+    <?php endif ?>
+
+    <?php if (!$isPermalink) : ?>
+        <div class="notice notice-error is-dismissible">
+            <p><?= esc_html(T::t('admin.permalink_error')) ?></p>
         </div>
     <?php endif ?>
 

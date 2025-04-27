@@ -38,12 +38,7 @@ add_action('add_meta_boxes', function () {
 });
 
 // Short links handler
-add_action(
-    'init',
-    function () {
-        $redirectHandler = new RedirectHandler();
-        $redirectHandler->register();
-        $redirectHandler->handle();
-    },
-    1
-);
+add_action('parse_request', function () {
+    $redirectHandler = new RedirectHandler();
+    $redirectHandler->handle($_SERVER['REQUEST_URI']);
+}, 0);

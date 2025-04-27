@@ -26,7 +26,6 @@ class AdminPage
     public function render(): void
     {
         $settingService = new SettingService();
-
         $settingContainer = $settingService->getContainer();
 
         $settingService->updateByPost($settingContainer, $_POST);
@@ -34,6 +33,7 @@ class AdminPage
         $this->renderTemplate('admin', [
             'settingContainer' => $settingContainer,
             'tab' => $_GET['tab'] ?? 'links',
+            'isPermalink' => (bool)get_option('permalink_structure'),
         ]);
     }
 }

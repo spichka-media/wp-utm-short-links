@@ -4,6 +4,7 @@ admin:
     title: "UTM Links Settings"
     description: "You can see the list of generated links on the Posts editing page"
     saved_successfully: "Settings saved successfully"
+    permalink_error: "The plugin cannot work without a configured Permalinks"
     links:
         tab: "Links to be shortened"
         description: "Set up the list of links to be shortened and their corresponding UTM tags"
