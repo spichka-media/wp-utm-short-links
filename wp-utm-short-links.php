@@ -5,7 +5,7 @@
  * Plugin URI https://github.com/spichka-media/wp-utm-short-links
  * Description: A WordPress plugin for creating short links on posts with UTM and other GET parameters
  * Version: 1.0.0
- * Author: spichka.media
+ * Author: https://spichka.media
  * License: GPL-3.0-or-later
  */
 
@@ -15,12 +15,13 @@ if (!defined('ABSPATH')) {
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Spichka\Usl\AdminPage;
-use Spichka\Usl\Handler;
-use Spichka\Usl\T;
+use Spichka\Usl\Services\AdminPage;
+use Spichka\Usl\Services\PostPage;
+use Spichka\Usl\Services\RedirectHandler;
+use Spichka\Usl\Services\T;
 
-// Load plugin text domain
-add_action('plugins_loaded', function () {
+// Initialize the plugin resources
+add_action('after_setup_theme', function () {
     T::init(get_option('WPLANG', 'en'));
 });
 
@@ -29,16 +30,16 @@ add_action('admin_menu', function () {
     AdminPage::register();
 });
 
+// Add page functions
+add_action('add_meta_boxes', function () {
+    PostPage::register();
+});
+
 // Short links handler
 add_action(
     'init',
     function () {
-        Handler::registerRewriteRules();
-        Handler::handleRedirect();
+        RedirectHandler::register();
+        RedirectHandler::handle();
     }
 );
-
-// Add page functions
-add_action('add_meta_boxes', function () {
-    AdminPage::addMetaBox();
-});

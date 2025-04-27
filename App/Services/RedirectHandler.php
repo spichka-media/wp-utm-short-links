@@ -1,17 +1,17 @@
 <?php
 
-namespace Spichka\Usl;
+namespace Spichka\Usl\Services;
 
-class Handler
+class RedirectHandler
 {
-    public static function registerRewriteRules(): void
+    public static function register(): void
     {
         add_rewrite_rule('^s/([^/]+)/([^/]+)/?', 'index.php?shortlink=$matches[1]&code=$matches[2]', 'top');
         add_rewrite_tag('%shortlink%', '([^&]+)');
         add_rewrite_tag('%code%', '([^&]+)');
     }
 
-    public static function handleRedirect(): void
+    public static function handle(): void
     {
         if (get_query_var('shortlink') && get_query_var('code')) {
             $shortlink = get_query_var('shortlink');

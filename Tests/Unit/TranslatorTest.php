@@ -3,7 +3,7 @@
 namespace Spichka\Usl\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Spichka\Usl\T;
+use Spichka\Usl\Services\T;
 
 class TranslatorTest extends TestCase
 {

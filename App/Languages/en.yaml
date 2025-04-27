@@ -1,0 +1,30 @@
+plugin:
+    name: "UTM Links"
+
+admin:
+    title: "UTM Links Settings"
+    description: "You can see the list of generated links on the Posts editing page"
+    links:
+        tab: "Links to be shortened"
+        description: "Set up the list of links to be shortened and their corresponding UTM tags"
+        no_links: "No links to shorten"
+        link_code: "Link code"
+        link_name: "Link name"
+    utms:
+        tab: "System UTM Tags"
+        description: "You can change the list of UTM tags that will be added to the links"
+        no_utms: "No UTM tags"
+        utm_code: "UTM tag code"
+        utm_name: "UTM tag name"
+    actions:
+        actions: "Actions"
+        remove: "Remove"
+        save: "Save"
+        add: "Add"
+
+utm:
+    utm_source: "Campaign Source"
+    utm_medium: "Traffic Type"
+    utm_campaign: "Campaign Name"
+    utm_content: "Ad Identifier"
+    utm_term: "Keyword"

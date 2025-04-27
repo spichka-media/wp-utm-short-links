@@ -3,23 +3,23 @@
 namespace Spichka\Usl\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Spichka\Usl\Handler;
+use Spichka\Usl\Services\RedirectHandler;
 
 class HandlerTest extends TestCase
 {
     public function testRegisterRewriteRules(): void
     {
-        $this->assertTrue(method_exists(Handler::class, 'registerRewriteRules'));
+        $this->assertTrue(method_exists(RedirectHandler::class, 'register'));
     }
 
     public function testHandleRedirect(): void
     {
-        $this->assertTrue(method_exists(Handler::class, 'handleRedirect'));
+        $this->assertTrue(method_exists(RedirectHandler::class, 'handle'));
     }
 
     public function testResolveShortlink(): void
     {
-        $method = new \ReflectionMethod(Handler::class, 'resolveShortlink');
+        $method = new \ReflectionMethod(RedirectHandler::class, 'handle');
         $method->setAccessible(true);
 
         $result = $method->invoke(null, 'example', 'tg');

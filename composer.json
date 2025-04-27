@@ -12,7 +12,6 @@
     "require": {
         "php": ">=8.3",
         "composer/installers": "^v2.3.0",
-        "htmlburger/carbon-fields": "^3.6",
         "symfony/translation": "^6.0",
         "symfony/yaml": "^v7.2"
     },
@@ -24,13 +23,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spichka\\Usl\\": "app/"
+            "Spichka\\Usl\\": "App/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spichka\\Usl\\": "app/",
-            "Spichka\\Usl\\Tests\\": "tests/"
+            "Spichka\\Usl\\": "App/",
+            "Spichka\\Usl\\Tests\\": "Tests/"
         }
     },
     "extra": {

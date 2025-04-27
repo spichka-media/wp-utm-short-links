@@ -1,6 +1,6 @@
 <?php
 
-namespace Spichka\Usl;
+namespace Spichka\Usl\Services;
 
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\Translator;
@@ -19,7 +19,7 @@ class T
      */
     public static function init(string $language = ''): void
     {
-        $translationPath = dirname(__DIR__) . '/languages/';
+        $translationPath = dirname(__DIR__) . '/Languages/';
         $failback = 'en';
 
         $language = preg_replace('/_.*$/', '', $language);
